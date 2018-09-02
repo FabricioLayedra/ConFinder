@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { ConfiderappProvider } from '../../providers/confiderapp/confiderapp';
 
 /**
  * Generated class for the FavoritesPage page.
@@ -15,11 +16,23 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class FavoritesPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  listaEventos: any[] = [];	
+  constructor(public navCtrl: NavController, public navParams: NavParams
+  	,public confinderProvider: ConfiderappProvider) {
   }
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad FavoritesPage');
+ ionViewDidLoad() {
+    console.log('ionViewDidLoad SearchPage');
+    this.confinderProvider.getEventos()
+    .subscribe(
+      (data) => { // Success
+        this.listaEventos = data;
+        console.log (data);
+      },
+      (error) =>{
+        console.error(error);
+      }
+    )
   }
 
 }

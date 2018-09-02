@@ -14,5 +14,19 @@
 
 
 <ion-content padding>
-
+	<ion-list>
+		<div *ngFor="let eventos of listaEventos">
+			<div *ngIf="eventos.favoritos == true">
+			  <ion-item text-wrap>
+			    <ion-thumbnail item-start>
+			     <ion-icon name="star"></ion-icon>
+			    </ion-thumbnail>
+			    <h2> {{eventos.Name}}</h2>
+			    	<p> Dead Line: {{eventos.deadline_date}}</p>
+			    	<p> Lugar: {{eventos.location}} </p>
+			    <button ion-button clear item-end>View</button>
+			  </ion-item>
+			</div>
+	    </div>
+	</ion-list>
 </ion-content>

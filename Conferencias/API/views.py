@@ -23,11 +23,16 @@ class Eventos(viewsets.ModelViewSet):
 
 @api_view(['GET'])
 def eventos_de_computacion(request):
-	lista_eventos = []
-	eventos = Eventos.objects.all()
-	for evento in eventos:
-		topicos = ["artificial intelligence","machine learning","computer vision","digital technology"]
-		lista_topicos = evento.topics.split("|")
-		if any(topic in topicos for topico_evento in lista_topicos):
-			lista_eventos.append(model_to_dict(evento))
-	return Response(lista_eventos)
+    lista_eventos = []
+    eventos = EventosModel.objects.all()
+    coincidencias = 0
+    for evento in eventos:
+        topicos = ["artificial intelligence","machine learning","computer vision","digital technology"]
+        lista_topicos = evento.topics.split("|")
+        print(lista_topicos)
+        for topics in lista_topicos:
+            if topics in topicos:
+                coincidencias = coincidencias +1
+        if coincidencias > 0:
+            lista_eventos.append(model_to_dict(evento))
+    return Response(lista_eventos)

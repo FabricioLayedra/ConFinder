@@ -19,12 +19,12 @@ export class SearchPage {
 
   listaEventos: any[] = [];
   constructor(public navCtrl: NavController, public navParams: NavParams
-  	 ,public confinderProvider: ConfiderappProvider) {
+  	 , public confinderProvider: ConfiderappProvider) {
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad SearchPage');
-    this.confinderProvider.getEventos()
+    this.confinderProvider.getEventosComputacion()
     .subscribe(
       (data) => { // Success
         this.listaEventos = data;
