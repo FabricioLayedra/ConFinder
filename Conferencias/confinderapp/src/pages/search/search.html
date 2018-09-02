@@ -1,0 +1,22 @@
+<!--
+  Generated template for the SearchPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Buscar</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+
+	<div *ngFor="let eventos of listaEventos">
+	 <p> {{eventos.Name}}</p>
+	</div>
+
+</ion-content>

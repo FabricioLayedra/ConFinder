@@ -1,0 +1,7 @@
+{
+  "name": "confinderapp",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "ionic-angular"
+}
