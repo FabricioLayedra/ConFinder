@@ -6,6 +6,9 @@ from rest_framework.response import Response
 from rest_framework import viewsets
 from django.forms.models import model_to_dict
 from rest_framework.decorators import api_view
+from rest_framework import viewsets, generics
+
+
 
 
 class Eventos(viewsets.ModelViewSet):
@@ -18,6 +21,7 @@ class Eventos(viewsets.ModelViewSet):
     #     E = EventosModel.objects.all()
     #     serializer = EventosSerializer(E, many=True)
     #     return Response(serializer.data)
+
 
 
 
@@ -36,3 +40,23 @@ def eventos_de_computacion(request):
         if coincidencias > 0:
             lista_eventos.append(model_to_dict(evento))
     return Response(lista_eventos)
+
+class Eventos_Tags(generics.ListAPIView):
+    serializer_class = EventosSerializer
+
+    def get_queryset(self):
+        """
+        Eventos filtrados por tag
+        """
+        tag = self.kwargs['tag']
+        return EventosModel.objects.filter(topics__contains=tag)
+        
+class Eventos_Favoritos(generics.ListAPIView):
+    serializer_class = EventosSerializer
+
+    def get_queryset(self):
+        """
+        Endpoint para todos los Eventos Favoritos
+        """
+        return EventosModel.objects.filter(favoritos=True)
+

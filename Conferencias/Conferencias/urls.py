@@ -25,4 +25,5 @@ router.register(r'eventos', views.Eventos)
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('',include(router.urls), name='api'),
+    path('eventos/tag/<slug:tag>', views.Eventos_Tags.as_view(), name='Tag Filter')
 ]
