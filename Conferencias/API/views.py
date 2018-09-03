@@ -3,9 +3,9 @@ from API.models import Eventos as EventosModel
 from API.serializer import EventosSerializer
 from rest_framework.views import APIView
 from rest_framework.response import Response
-from rest_framework import viewsets
-from django.forms.models import model_to_dict
-from rest_framework.decorators import api_view
+from rest_framework import viewsets, generics
+from datetime import datetime
+
 
 
 class Eventos(viewsets.ModelViewSet):
@@ -19,15 +19,33 @@ class Eventos(viewsets.ModelViewSet):
     #     serializer = EventosSerializer(E, many=True)
     #     return Response(serializer.data)
 
+class Eventos_Tags(generics.ListAPIView):
+    serializer_class = EventosSerializer
 
+    def get_queryset(self):
+        """
+        Eventos filtrados por tag
+        """
+        tag = ' '.join(self.kwargs['tag'].split('_'))
+        return EventosModel.objects.filter(topics__contains=tag)
+        
+class Eventos_Favoritos(generics.ListAPIView):
+    serializer_class = EventosSerializer
 
-@api_view(['GET'])
-def eventos_de_computacion(request):
-	lista_eventos = []
-	eventos = Eventos.objects.all()
-	for evento in eventos:
-		topicos = ["artificial intelligence","machine learning","computer vision","digital technology"]
-		lista_topicos = evento.topics.split("|")
-		if any(topic in topicos for topico_evento in lista_topicos):
-			lista_eventos.append(model_to_dict(evento))
-	return Response(lista_eventos)
+    def get_queryset(self):
+        """
+        Endpoint para todos los Eventos Favoritos
+        """
+        return EventosModel.objects.filter(favoritos=True)
+
+class Eventos_Mes(generics.ListAPIView):
+    serializer_class = EventosSerializer
+
+    def get_queryset(self):
+        """
+        Endpoint para todos los Eventos del mes actual
+        """
+        currentMonth, currentYear = datetime.now().strftime('%b %Y').split(' ')
+        e = EventosModel.objects.filter(start_date__contains=currentYear)
+        e = e.filter(start_date__contains=currentMonth)
+        return e.order_by('start_date')
