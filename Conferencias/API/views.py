@@ -25,7 +25,7 @@ class Eventos_Tags(generics.ListAPIView):
         """
         Eventos filtrados por tag
         """
-        tag = self.kwargs['tag']
+        tag = ' '.join(self.kwargs['tag'].split('_'))
         return EventosModel.objects.filter(topics__contains=tag)
         
 class Eventos_Favoritos(generics.ListAPIView):
