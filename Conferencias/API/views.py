@@ -43,7 +43,7 @@ class Eventos_Mes(generics.ListAPIView):
 
     def get_queryset(self):
         """
-        Endpoint para todos los Eventos del mes actual
+        Endpoint para todos los Eventos Favoritos
         """
         currentMonth, currentYear = datetime.now().strftime('%b %Y').split(' ')
         e = EventosModel.objects.filter(start_date__contains=currentYear)
