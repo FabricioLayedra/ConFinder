@@ -1,5 +1,5 @@
 <!--
-  Generated template for the SearchPage page.
+  Generated template for the ProximosPage page.
 
   See http://ionicframework.com/docs/components/#navigation for more info on
   Ionic pages and navigation.
@@ -7,27 +7,13 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>Buscar</ion-title>
+    <ion-title>Conferencias Cercanas</ion-title>
   </ion-navbar>
 
 </ion-header>
 
 
 <ion-content padding>
-	<ion-refresher (ionRefresh)="doRefresh($event)">
-    <ion-refresher-content
-      pullingIcon="arrow-dropdown"
-      pullingText="Tire para actualizar"
-      refreshingSpinner="circles"
-      refreshingText="Actualizando...">
-    </ion-refresher-content>
-  </ion-refresher>
-	<ion-searchbar
-	  [(ngModel)]="myInput"
-	  [showCancelButton]="shouldShowCancel"
-	  (ionInput)="onInput($event)"
-	  (ionCancel)="onCancel($event)">
-	</ion-searchbar>
 	<ion-list>
 		<div *ngFor="let eventos of listaEventos">
 			  <ion-item text-wrap>

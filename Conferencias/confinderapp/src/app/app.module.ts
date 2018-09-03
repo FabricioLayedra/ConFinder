@@ -8,6 +8,11 @@ import { HomePage } from '../pages/home/home';
 import { TabsPage } from '../pages/tabs/tabs';
 import { FavoritesPage } from '../pages/favorites/favorites';
 import { SearchPage } from '../pages/search/search';
+import { ProximosPage } from '../pages/proximos/proximos';
+import { ComputerconfPage } from '../pages/computerconf/computerconf';
+
+
+
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -19,7 +24,10 @@ import { ConfiderappProvider } from '../providers/confiderapp/confiderapp';
     HomePage,
     TabsPage,
     SearchPage,
-    FavoritesPage
+    FavoritesPage,
+    ProximosPage,
+    ComputerconfPage
+
   ],
   imports: [
     BrowserModule,
@@ -32,7 +40,10 @@ import { ConfiderappProvider } from '../providers/confiderapp/confiderapp';
     HomePage,
     TabsPage,
     SearchPage,
-    FavoritesPage
+    FavoritesPage,
+    ProximosPage,
+    ComputerconfPage
+
   ],
   providers: [
     StatusBar,

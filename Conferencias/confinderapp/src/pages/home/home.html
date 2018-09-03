@@ -9,28 +9,28 @@
    
   <ion-content class="card-background-page">
 
-    <ion-card>
+    <ion-card (click)="irAComputacion('computer')">
       <img  class ="imagen-topico" src="assets/imgs/computer.png"/>
       <div class="card-title">Computación</div>
-      <div class="card-subtitle">41 Encontrados</div>
+      <div class="card-subtitle">{{listaEventos.length}} Encontrados</div>
     </ion-card>
 
     <ion-card>
       <img class ="imagen-topico"  src="assets/imgs/agricultura.jpeg"/>
       <div class="card-title">Agricultura</div>
-      <div class="card-subtitle">64 Encontrados</div>
+      <div class="card-subtitle">4 Encontrados</div>
     </ion-card>
 
     <ion-card>
       <img class ="imagen-topico"  src="assets/imgs/mecanica.jpg"/>
       <div class="card-title">Mecanica</div>
-      <div class="card-subtitle">72 Encontrados</div>
+      <div class="card-subtitle">12 Encontrados</div>
     </ion-card>
 
     <ion-card>
       <img class ="imagen-topico"  src="assets/imgs/quimica.jpg"/>
       <div class="card-title">Quimica</div>
-      <div class="card-subtitle">28 Encontrados</div>
+      <div class="card-subtitle">8 Encontrados</div>
     </ion-card>
 
   </ion-content>

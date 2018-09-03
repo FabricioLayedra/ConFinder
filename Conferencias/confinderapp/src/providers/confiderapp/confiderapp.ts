@@ -28,6 +28,11 @@ private token: any[] = [];
     }
 
     getEventosComputacion() {
-    	return this.http.get<any>(this.url+'eventosComputacion/');
+    	return this.http.get<any>(this.url+'eventos/tag/computer');
     }
+
+    getEventosCercanos() {
+      return this.http.get<any>(this.url+'eventos/cercanos');
+    }
+
 }
